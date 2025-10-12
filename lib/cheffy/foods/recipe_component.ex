@@ -5,4 +5,18 @@ defmodule Cheffy.Foods.RecipeComponent do
     table "recipe_components"
     repo Cheffy.Repo
   end
+
+  relationships do
+    belongs_to :recipe, Cheffy.Foods.Recipe do
+      primary_key? true
+      public? true
+      allow_nil? false
+    end
+
+    belongs_to :ingredient, Cheffy.Foods.Ingredient do
+      primary_key? true
+      public? true
+      allow_nil? false
+    end
+  end
 end

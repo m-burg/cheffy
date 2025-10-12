@@ -6,7 +6,6 @@ defmodule Cheffy.Foods do
     resource Cheffy.Foods.Ingredient
     resource Cheffy.Foods.Recipe
     resource Cheffy.Foods.RecipeComponent
-    resource Cheffy.Foods.ComponentSubstitute
     resource Cheffy.Foods.IngredientCategory
   end
 end

@@ -5,4 +5,21 @@ defmodule Cheffy.Foods.Ingredient do
     table "ingredients"
     repo Cheffy.Repo
   end
+
+  attributes do
+    uuid_primary_key :id
+
+    attribute :name, :string do
+      public? true
+      allow_nil? false
+    end
+  end
+
+  relationships do
+    belongs_to :category, Cheffy.Foods.IngredientCategory do
+      source_attribute :ingredient_category_id
+      allow_nil? false
+      public? true
+    end
+  end
 end

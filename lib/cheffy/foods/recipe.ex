@@ -5,4 +5,19 @@ defmodule Cheffy.Foods.Recipe do
     table "recipes"
     repo Cheffy.Repo
   end
+
+  attributes do
+    uuid_primary_key :id
+
+    attribute :name, :string do
+      public? true
+      allow_nil? false
+    end
+  end
+
+  relationships do
+    has_many :components, Cheffy.Foods.RecipeComponent do
+      public? true
+    end
+  end
 end
