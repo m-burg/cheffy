@@ -12,5 +12,7 @@ defmodule Cheffy.Foods do
     resource Cheffy.Foods.Recipe
     resource Cheffy.Foods.RecipeComponent
     resource Cheffy.Foods.IngredientCategory
+    resource Cheffy.Foods.Guest
+    resource Cheffy.Foods.GuestExcludedCategory
   end
 end

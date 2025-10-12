@@ -28,6 +28,13 @@ defmodule Cheffy.Foods.IngredientCategory do
   end
 
   relationships do
+    has_many :exclusion_relationships, Cheffy.Foods.GuestExcludedCategory
+
+    many_to_many :excluded_guests, Cheffy.Foods.Guest do
+      join_relationship :exclusion_relationships
+      destination_attribute_on_join_resource :guest_id
+    end
+
     has_many :ingredients, Cheffy.Foods.Ingredient do
       destination_attribute :ingredient_category_id
       public? true
