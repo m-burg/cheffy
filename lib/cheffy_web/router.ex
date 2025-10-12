@@ -1,6 +1,8 @@
 defmodule CheffyWeb.Router do
   use CheffyWeb, :router
 
+  import Clarity.Router
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -49,6 +51,16 @@ defmodule CheffyWeb.Router do
       pipe_through :browser
 
       ash_admin "/"
+    end
+  end
+
+  if Application.compile_env(:cheffy, :dev_routes) do
+    import Clarity.Router
+
+    scope "/clarity" do
+      pipe_through :browser
+
+      clarity "/"
     end
   end
 end

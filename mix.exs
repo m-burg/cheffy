@@ -11,7 +11,7 @@ defmodule Cheffy.MixProject do
       aliases: aliases(),
       deps: deps(),
       compilers: [:phoenix_live_view] ++ Mix.compilers(),
-      listeners: [Phoenix.CodeReloader],
+      listeners: [Phoenix.CodeReloader, Clarity.CodeReloader],
       consolidate_protocols: Mix.env() != :dev
     ]
   end
@@ -41,6 +41,8 @@ defmodule Cheffy.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:clarity, "~> 0.3"},
+      {:ash_diagram, "~> 0.1.3"},
       {:sourceror, "~> 1.8", only: [:dev, :test]},
       {:live_debugger, "~> 0.4", only: [:dev]},
       {:ash_admin, "~> 0.13"},
