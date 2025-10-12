@@ -49,7 +49,8 @@ config :spark,
 
 config :cheffy,
   ecto_repos: [Cheffy.Repo],
-  generators: [timestamp_type: :utc_datetime]
+  generators: [timestamp_type: :utc_datetime],
+  ash_domains: [Cheffy.Foods]
 
 # Configures the endpoint
 config :cheffy, CheffyWeb.Endpoint,
