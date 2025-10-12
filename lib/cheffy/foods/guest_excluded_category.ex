@@ -6,6 +6,14 @@ defmodule Cheffy.Foods.GuestExcludedCategory do
     repo Cheffy.Repo
   end
 
+  actions do
+    defaults [:read, :destroy]
+
+    create :create do
+      accept [:guest_id, :ingredient_category_id]
+    end
+  end
+
   relationships do
     belongs_to :guest, Cheffy.Foods.Guest do
       public? true

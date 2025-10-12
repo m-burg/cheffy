@@ -34,4 +34,14 @@ defmodule Cheffy.Foods.Ingredient do
       public? true
     end
   end
+
+  calculations do
+    calculate :edible_by_guest,
+              :boolean,
+              {Cheffy.Foods.Calculations.IngredientEdibleByGuest, []} do
+      argument :guest_id, :uuid do
+        allow_nil? false
+      end
+    end
+  end
 end
