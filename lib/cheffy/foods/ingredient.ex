@@ -6,6 +6,18 @@ defmodule Cheffy.Foods.Ingredient do
     repo Cheffy.Repo
   end
 
+  actions do
+    defaults [:read, :destroy]
+
+    create :create do
+      accept [:name, :ingredient_category_id]
+    end
+
+    update :update do
+      accept [:name, :ingredient_category_id]
+    end
+  end
+
   attributes do
     uuid_primary_key :id
 

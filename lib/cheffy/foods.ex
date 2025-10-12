@@ -1,6 +1,11 @@
 defmodule Cheffy.Foods do
   use Ash.Domain,
-    otp_app: :cheffy
+    otp_app: :cheffy,
+    extensions: [AshAdmin.Domain]
+
+  admin do
+    show? true
+  end
 
   resources do
     resource Cheffy.Foods.Ingredient

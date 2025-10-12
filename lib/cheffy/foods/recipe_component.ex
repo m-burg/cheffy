@@ -6,6 +6,14 @@ defmodule Cheffy.Foods.RecipeComponent do
     repo Cheffy.Repo
   end
 
+  actions do
+    defaults [:read, :destroy]
+
+    create :create do
+      accept [:recipe_id, :ingredient_id]
+    end
+  end
+
   relationships do
     belongs_to :recipe, Cheffy.Foods.Recipe do
       primary_key? true
