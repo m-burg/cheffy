@@ -7,7 +7,12 @@ defmodule Cheffy.Foods.ComponentSubstitute do
   end
 
   actions do
-    defaults [:create, :read, :update, :destroy]
+    defaults [:read, :destroy]
+
+    create :create do
+      primary? true
+      accept [:recipe_component_id, :ingredient_id]
+    end
   end
 
   relationships do
@@ -21,6 +26,18 @@ defmodule Cheffy.Foods.ComponentSubstitute do
       primary_key? true
       allow_nil? false
       public? true
+    end
+  end
+
+  calculations do
+    calculate :edible_by_guest,
+              :boolean,
+              {Cheffy.Foods.Calculations.SubstituteEdibleByGuest, []} do
+      public? true
+
+      argument :guest_id, :uuid do
+        allow_nil? false
+      end
     end
   end
 end
