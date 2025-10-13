@@ -38,7 +38,13 @@ defmodule Cheffy.Foods.Ingredient do
   calculations do
     calculate :edible_by_guest,
               :boolean,
-              {Cheffy.Foods.Calculations.IngredientEdibleByGuest, []} do
+              expr(
+                not exists(
+                  Cheffy.Foods.GuestExcludedCategory,
+                  guest_id == ^arg(:guest_id) &&
+                    ingredient_category_id == parent(ingredient_category_id)
+                )
+              ) do
       public? true
 
       argument :guest_id, :uuid do
