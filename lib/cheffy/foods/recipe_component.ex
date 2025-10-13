@@ -14,17 +14,22 @@ defmodule Cheffy.Foods.RecipeComponent do
     end
   end
 
+  attributes do
+    uuid_primary_key :id
+  end
+
   relationships do
     belongs_to :recipe, Cheffy.Foods.Recipe do
-      primary_key? true
       public? true
       allow_nil? false
     end
 
     belongs_to :ingredient, Cheffy.Foods.Ingredient do
-      primary_key? true
       public? true
       allow_nil? false
+    end
+
+    has_many :substitutes, Cheffy.Foods.ComponentSubstitute do
     end
   end
 
@@ -38,5 +43,10 @@ defmodule Cheffy.Foods.RecipeComponent do
         allow_nil? false
       end
     end
+  end
+
+  identities do
+    identity :unique_recipe_ingredient_combo, [:ingredient_id, :recipe_id],
+      message: "ingredient has already been added to this recipe"
   end
 end

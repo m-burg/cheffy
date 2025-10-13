@@ -14,5 +14,6 @@ defmodule Cheffy.Foods do
     resource Cheffy.Foods.IngredientCategory
     resource Cheffy.Foods.Guest
     resource Cheffy.Foods.GuestExcludedCategory
+    resource Cheffy.Foods.ComponentSubstitute
   end
 end
