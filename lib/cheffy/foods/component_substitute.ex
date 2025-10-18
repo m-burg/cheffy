@@ -32,7 +32,7 @@ defmodule Cheffy.Foods.ComponentSubstitute do
   calculations do
     calculate :edible_by_guest,
               :boolean,
-              {Cheffy.Foods.Calculations.SubstituteEdibleByGuest, []} do
+              expr(ingredient.edible_by_guest(guest_id: ^arg(:guest_id))) do
       public? true
 
       argument :guest_id, :uuid do

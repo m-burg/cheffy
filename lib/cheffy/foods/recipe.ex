@@ -34,7 +34,12 @@ defmodule Cheffy.Foods.Recipe do
   end
 
   calculations do
-    calculate :edible_by_guest, :boolean, {Cheffy.Foods.Calculations.RecipeEdibleByGuest, []} do
+    calculate :edible_by_guest,
+              :boolean,
+              expr(
+                count(components) ==
+                  count(components, query: [filter: edible_by_guest(guest_id: ^arg(:guest_id))])
+              ) do
       public? true
 
       argument :guest_id, :uuid do
