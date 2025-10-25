@@ -37,8 +37,8 @@ defmodule Cheffy.Foods.RecipeComponent do
     calculate :edible_by_guest,
               :boolean,
               expr(
-                ingredient.edible_by_guest(guest_id: ^arg(:guest_id)) == true ||
-                  exists(substitutes, edible_by_guest(guest_id: ^arg(:guest_id)) == true)
+                ingredient.edible_by_guest(guest_id: ^arg(:guest_id)) ||
+                  exists(substitutes, edible_by_guest(guest_id: ^arg(:guest_id)))
               ) do
       public? true
 
