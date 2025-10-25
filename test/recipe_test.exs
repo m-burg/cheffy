@@ -71,6 +71,16 @@ defmodule Cheffy.RecipTest do
     refute wheat_flour.edible_by_guest
   end
 
+  test "should be able to filter on the edible calculation on Ingredient", context do
+    guest = context[:gluten_free_guest]
+
+    query =
+      Foods.Ingredient
+      |> Ash.Query.filter(edible_by_guest(guest_id: ^guest.id))
+
+    assert length(Ash.read!(query, load: [edible_by_guest: [guest_id: guest.id]])) == 1
+  end
+
   test "should be able to load the edible calculation on RecipeComponent", context do
     guest = context[:gluten_free_guest]
 
