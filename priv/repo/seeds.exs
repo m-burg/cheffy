@@ -38,3 +38,5 @@ gluten_free_exclusion =
     guest_id: gluten_free_guest.id,
     ingredient_category_id: gluten.id
   })
+
+exclusionless_guest = Foods.create_guest!(%{name: "can eat anything"})

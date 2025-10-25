@@ -49,7 +49,7 @@ defmodule Cheffy.MixProject do
       {:ash_postgres, "~> 2.0"},
       {:ash_sql,
        git: "https://github.com/ash-project/ash_sql",
-       ref: "7ab678a56e4b56c9ec522973a6fabf2a6a81e556",
+       ref: "c7515df40f7e8940420e3fcc2281e0b3c9436f80",
        override: true},
       {:ash_phoenix, "~> 2.0"},
       {:ash, "~> 3.0"},

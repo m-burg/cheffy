@@ -1,18 +1,20 @@
 # Cheffy
 
-To start your Phoenix server:
+Run a PostgreSQL container:
 
-* Run `mix setup` to install and setup dependencies
-* Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+``` sh
+podman run -p 5432:5432  -e POSTGRES_PASSWORD=postgres postgres
+```
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Setup
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+``` sh
+mix deps.get
+```
 
-## Learn more
+Trigger the bug
 
-* Official website: https://www.phoenixframework.org/
-* Guides: https://hexdocs.pm/phoenix/overview.html
-* Docs: https://hexdocs.pm/phoenix
-* Forum: https://elixirforum.com/c/phoenix-forum
-* Source: https://github.com/phoenixframework/phoenix
+``` sh
+mix test
+```
+
